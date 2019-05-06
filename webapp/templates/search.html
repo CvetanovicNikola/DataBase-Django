@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="jumbotron text-center">
+    <div class="container">
+        <h1 class="jumbotron-heading">Search data base</h1>
+        <p class="lead text-muted">Search employees</p>
+
+        <form action="{% url 'get_name' %}" method="get">
+            {% csrf_token %}
+            <label for="lastname">Lastname: </label>
+            <input id="lastname" type="text" name="lastname" value="{{ current_name|capfirst }}">
+            <input type="submit" value="Search" class="btn btn-primary my-2">
+            
+        </form>
+
+
+    </div>
+</section>
+{% endblock content %}

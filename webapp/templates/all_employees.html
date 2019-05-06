@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+{% load staticfiles %}
+<style>
+    #all {
+        margin-bottom: 5%;
+        margin-top: 0%;
+        text-align: center;
+    }
+
+    #names {
+        position: relative;
+        left: 40%;
+        top: 15%;
+    }
+
+    #description {
+        width: 50%;
+    }
+
+    #photo {
+        width: 285px;
+    }
+</style>
+
+<h1 class="jumbotron text-center" id="all">All employees</h1>
+
+<div class="row">
+    {% for employee in employees %}
+    <div class="col">
+        <div class="card" style="width: 18rem;">
+            <img id="photo" src="{{ employee.photo.url }}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{ employee.lastname}}</h5>
+                <p class="card-text">{{ employee.firstname}}</p>
+                <p class="card-text">{{ employee.ocupation}}</p>
+                <a href="{% url 'employee_detail' employee.lastname %}" class="btn btn-primary">Details</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+
+
+{% endblock content %}

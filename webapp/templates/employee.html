@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+{% load staticfiles %}
+<style>
+    #all {
+        margin-bottom: 5%;
+        margin-top: 0%;
+        text-align: center;
+    }
+
+    #names {
+        position: relative;
+        left: 40%;
+        top: 15%;
+    }
+
+    #description {
+        width: 50%
+    }
+
+    #photo {
+        width: 120px;
+        position: relative;
+        right: 150px;
+        border: 3px solid #73AD21;
+    }
+    #button {
+        position: relative;
+        left: 45%;
+        top: 15%;
+    }
+</style>
+
+<h1 class="jumbotron text-center" id="all">Employee : </h1>
+
+
+<div id="names">
+    <ol>
+        
+            {% for emp in employee %}
+            
+                {% if emp.photo %}
+                <img id="photo" src="{{ emp.photo.url }}" width="120">
+                {% endif %}
+                <br>
+                <li><b>Firstname :</b>{{ emp.firstname}}</li>
+                <b>Lastname :</b>{{ emp.lastname}}
+                <br>
+                <b>Ocupation :</b>{{ emp.ocupation}}
+                <br>
+                <br>
+                <br>
+                <p id="description">
+                    <b>Description :</b>{{ emp.description}}
+                </p>
+                <br>
+                <b>Starting date :</b>{{ emp.date|date:"M d Y" }}
+                <br>
+                <b>Age :</b>{{ emp.age}}
+                <br>
+                <b>Gender :</b>{{ emp.sex}}
+
+                <br>
+                <br>
+                <br>
+
+                
+                {% endfor %}
+        
+    </ol>
+
+</div>
+
+<p>
+    <a id="button" href="{% url 'search' %}" class="btn btn-primary my-2">Search again</a>
+
+</p>
+
+{% endblock content %}
